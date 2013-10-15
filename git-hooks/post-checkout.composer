@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Put this file at: .git/hooks/post-checkout
-# and make it executable
+# Put this file at: .git/hooks/post-checkout and make it executable
 # You can install it system wide too, see http://stackoverflow.com/a/2293578/685587
+# This script is based on: https://gist.github.com/lyrixx/5867424#file-post-checkout
 
 PREV_COMMIT=$1
 POST_COMMIT=$2
