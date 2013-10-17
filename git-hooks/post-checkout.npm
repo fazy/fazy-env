@@ -13,7 +13,7 @@ REDCOLOR='\e[37;41m'
 if [[ -f package.json ]]; then
     DIFF=`git diff --shortstat $PREV_COMMIT..$POST_COMMIT package.json`
     if [[ $DIFF != "" ]]; then
-        echo -e "${REDCOLOR}Note: package.json has changed. Run composer install to update dependencies.$NOCOLOR"
+        echo -e "${REDCOLOR}Note: package.json has changed. Run npm install to update dependencies.$NOCOLOR"
     fi
 fi
 
