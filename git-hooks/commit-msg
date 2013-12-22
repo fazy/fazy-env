@@ -2,13 +2,13 @@
 
 ## Append ticket number from branch name to each commit
 
-if [ "" != `cat $1 | perl -n -e'/(\[[\w\-\d]+\])/i && print uc($1)'` ]; then
+if [ "" != `cat $1 | perl -n -e'/(\[\w+-\d+\])/i && print uc($1)'` ]; then
     exit
 fi
 
 branch=$(git symbolic-ref HEAD)
 if [ -n "$branch" ] && [ $branch != "master" ]; then
-    ticket=$(echo $branch | perl -n -e'/\/([\w_\-]+\d+)/i && print uc($1)')
+    ticket=$(echo $branch | perl -n -e'/\/(\w+-\d+)/i && print uc($1)')
 
     if [ -n "$ticket" ]; then
         echo "[$ticket] $(cat $1)" > $1
