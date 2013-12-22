@@ -1,15 +1,15 @@
 #!/bin/sh
 
 ## Append ticket number from branch name to each commit
-## WARNING: hard-coded to DEV-### (where ### any number)
 
-if [ "empty" = `cat $1 | perl -e'while(<>) {next if /^\s*$/; print "empty" if /^\#/; exit;}'` ]; then
+if [ "" != `cat $1 | perl -n -e'/(\[[\w\-\d]+\])/i && print uc($1)'` ]; then
     exit
 fi
 
 branch=$(git symbolic-ref HEAD)
 if [ -n "$branch" ] && [ $branch != "master" ]; then
-    ticket=$(echo $branch | perl -n -e'/\b(dev\-\d+)\b/i && print uc($1)')
+    ticket=$(echo $branch | perl -n -e'/\/([\w_\-]+\d+)/i && print uc($1)')
+
     if [ -n "$ticket" ]; then
         echo "[$ticket] $(cat $1)" > $1
     fi
