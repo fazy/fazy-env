@@ -34,3 +34,13 @@ END_OF_FILE
 
 chmod u+x ~/.bashrc
 
+sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+foundRepo=$(grep apt.dockerproject.org /etc/apt/sources.list.d/additional-repositories.list)
+if [ -z "$foundRepo" ]; then
+    sudo apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+fi
+
+sudo apt-get update
+sudo apt-get install docker-engine
+
+sudo gpasswd -a `whoami` docker
