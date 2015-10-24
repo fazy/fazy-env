@@ -34,6 +34,10 @@ END_OF_FILE
 
 chmod u+x ~/.bashrc
 
+# Install Python PIP (will be needed for a couple of things)
+sudo apt-get -yq install python-pip
+
+# Install Docker
 sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 foundRepo=$(grep apt.dockerproject.org /etc/apt/sources.list.d/additional-repositories.list)
 if [ -z "$foundRepo" ]; then
@@ -41,6 +45,8 @@ if [ -z "$foundRepo" ]; then
 fi
 
 sudo apt-get update
-sudo apt-get install docker-engine
+sudo apt-get -yq install docker-engine
+sudo pip install docker-compose
 
 sudo gpasswd -a `whoami` docker
+
