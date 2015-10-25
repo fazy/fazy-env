@@ -18,8 +18,8 @@ sudo apt-get -yq install \
 curl -o ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml \
     https://raw.githubusercontent.com/fazy/fazy-env/master/mint-desktop/gnome-terminal.xml
 
-git config --global user.email $GIT_USER_EMAIL
-git config --global user.name $GIT_USER_NAME
+git config --global user.email "$GIT_USER_EMAIL"
+git config --global user.name "$GIT_USER_NAME"
 git config --global core.editor "vim"
 git config --global push.default simple
 
