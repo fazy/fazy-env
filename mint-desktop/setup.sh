@@ -50,6 +50,7 @@ sudo apt-get -yq install docker-engine
 sudo pip install docker-compose
 
 sudo gpasswd -a `whoami` docker
+sudo gpasswd -a `whoami` www-data
 
 # Install AWS CLI tools
 sudo pip install awscli
