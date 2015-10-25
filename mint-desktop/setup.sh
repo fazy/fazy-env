@@ -12,6 +12,7 @@ sudo apt-get -yq install \
     chromium-browser \
     curl \
     git \
+    jq \
     vim
 
 curl -o ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml \
@@ -49,4 +50,17 @@ sudo apt-get -yq install docker-engine
 sudo pip install docker-compose
 
 sudo gpasswd -a `whoami` docker
+
+# Install AWS CLI tools
+sudo pip install awscli
+
+mkdir -p ~/.aws
+cat <<END_OF_FILE > ~/.aws/config
+[default]
+output = json
+region = eu-west-1
+END_OF_FILE
+
+# MySQL workbench
+apt-get -yq install mysql-workbench
 
