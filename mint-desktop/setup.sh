@@ -12,6 +12,7 @@ sudo apt-get -yq install \
     chromium-browser \
     colordiff \
     curl \
+    dos2unix \
     git \
     jq \
     vim
