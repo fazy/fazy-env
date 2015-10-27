@@ -10,6 +10,7 @@ sudo apt-get update
 sudo apt-get -yq upgrade
 sudo apt-get -yq install \
     chromium-browser \
+    colordiff \
     curl \
     git \
     jq \
