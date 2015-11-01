@@ -4,6 +4,7 @@
 
 GIT_USER_EMAIL="lars@fazy.net"
 GIT_USER_NAME="Lars Janssen"
+GO_VERSION=1.5.1
 
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
@@ -33,12 +34,6 @@ for dir in ~/Music ~/Pictures ~/Public ~/Templates ~/Videos; do
         rmdir $dir --ignore-fail-on-non-empty
     fi
 done
-
-cat <<END_OF_FILE > ~/.bashrc
-alias vi=vim
-END_OF_FILE
-
-chmod u+x ~/.bashrc
 
 # Install Python PIP (will be needed for a couple of things)
 sudo apt-get -yq install python-pip
@@ -75,4 +70,25 @@ sudo apt-get install -yq qemu-kvm libvirt-bin bridge-utils
 sudo apt-get install -yq virt-manager
 sudo apt-get install -yq qemu-system
 sudo adduser $USER libvirtd
+
+# Install Go
+curl -o /tmp/go$GO_VERSION.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf /tmp/go$GO_VERSION.linux-amd64.tar.gz
+
+# Create a new .bashrc
+cat <<END_OF_FILE > ~/.bashrc
+alias vi=vim
+END_OF_FILE
+
+chmod u+x ~/.bashrc
+
+# Create a .profile script that calls .bashrc
+# http://unix.stackexchange.com/questions/88106/why-doesnt-my-bash-profile-work
+cat <<END_OF_FILE > ~/.profile
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+END_OF_FILE
+
+chmod u+x ~/.profile
 
