@@ -16,6 +16,7 @@ sudo apt-get -yq install \
     dos2unix \
     git \
     jq \
+    screen \
     vim
 
 curl -o ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml \
