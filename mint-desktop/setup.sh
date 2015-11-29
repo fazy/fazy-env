@@ -16,7 +16,8 @@ sudo apt-get -yq install \
     dos2unix \
     git \
     jq \
-    vim
+    vim \
+    whois
 
 curl -o ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml \
     https://raw.githubusercontent.com/fazy/fazy-env/master/mint-desktop/gnome-terminal.xml
