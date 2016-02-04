@@ -2,7 +2,7 @@
 
 ## Append ticket number from branch name to each commit
 
-if [ "" != `cat $1 | perl -n -e'/(\[\w+-\d+\])/i && print uc($1)'` ]; then
+if [ "x" != x`cat $1 | perl -n -e'/(\[\w+-\d+\])/i && print uc($1)'` ]; then
     exit
 fi
 
