@@ -8,6 +8,11 @@ fi
 
 branch=$(git symbolic-ref HEAD)
 if [ -n "$branch" ] && [ $branch != "master" ]; then
+    line=$(head -n 1 $1)
+    if [ "x" = "x$line" ]; then
+        exit
+    fi
+
     ticket=$(echo $branch | perl -n -e'/\/(\w+-\d+)/i && print uc($1)')
 
     if [ -n "$ticket" ]; then
