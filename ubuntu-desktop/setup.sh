@@ -2,10 +2,6 @@
 
 ### Set up a few things for my Linux Mint desktop machine...
 
-GIT_USER_EMAIL=""
-GIT_USER_NAME=""
-GO_VERSION=1.5.1
-
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 sudo apt-get -yq upgrade
