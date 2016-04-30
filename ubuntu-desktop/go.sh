@@ -2,6 +2,9 @@
 
 GO_VERSION=1.6.2
 
+# Clean old version; issues do happen if this isn't done
+sudo rm -rf /usr/local/go
+
 # Install Go
 curl -o /tmp/go$GO_VERSION.linux-amd64.tar.gz https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf /tmp/go$GO_VERSION.linux-amd64.tar.gz
