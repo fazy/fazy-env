@@ -11,8 +11,8 @@ sudo apt-get -yq install \
     curl \
     dos2unix \
     git \
+    htop \
     jq \
-    vim \
     whois \
     screen \
     tmux \
