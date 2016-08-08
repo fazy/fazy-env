@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Audio volume script for Mac computers that miscalibrate USB speakers
+#   vol 1       # loud
+#   vol 0.1     # normal/loud-ish
+#   vol 0.01    # quiet/normal
+#   vol 0.001   # very quiet
+
+vol=$1
+if [ -z "$vol" ]; then
+    vol=0.01
+fi
+
+echo "Setting volume level to $vol"
+osascript -e "set Volume $vol"
+
