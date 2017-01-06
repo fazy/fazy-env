@@ -21,6 +21,7 @@ sudo apt-get -yq install \
 git config --global core.editor "vim"
 git config --global push.default simple
 git config --global core.excludesfile "~/.gitignore"
+git config --global push.default current
 
 echo ".idea" > ~/.gitignore
 
