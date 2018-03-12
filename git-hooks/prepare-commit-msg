@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import sys, os, re
+from subprocess import check_output, CalledProcessError
+
+commit_msg_filepath = sys.argv[1]
+if len(sys.argv) > 2:
+    commit_type = sys.argv[2]
+else:
+    commit_type = ''
+if len(sys.argv) > 3:
+    commit_hash = sys.argv[3]
+else:
+    commit_hash = ''
+
+try:
+        branch = check_output(['git', 'symbolic-ref', '--short', 'HEAD']).decode("utf-8").strip()
+        result = re.match('(feature-|bug-)?([\w]+-[\d]+).*', branch)
+        if result:
+                issue_number = result.group(2)
+                print ("prepare-commit-msg - adding issue key:", issue_number)
+
+                with open(commit_msg_filepath, 'r+') as f:
+                        content = f.read()
+                        f.seek(0, 0)
+                        f.write("%s %s" % (issue_number, content))
+except CalledProcessError:
+        print ("prepare-commit-msg - failed to get branch name - maybe we're rebasing...")
+
